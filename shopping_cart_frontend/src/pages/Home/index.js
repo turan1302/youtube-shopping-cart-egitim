@@ -6,6 +6,7 @@ import RestClient from "../../RestAPI/RestClient";
 import AppUrl from "../../RestAPI/AppUrl";
 import App from "../../App";
 import cartWrapper from "../../cartWrapper";
+import Notification from "../../RestAPI/Notification";
 
 export class Home extends Component {
 
