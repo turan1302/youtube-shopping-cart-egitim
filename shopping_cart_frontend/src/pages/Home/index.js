@@ -4,9 +4,10 @@ import withRouter from "../../withRouter";
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import RestClient from "../../RestAPI/RestClient";
 import AppUrl from "../../RestAPI/AppUrl";
-import App from "../../App";
 import cartWrapper from "../../cartWrapper";
 import Notification from "../../RestAPI/Notification";
+import {Helmet} from "react-helmet";
+import {CircleSpinner} from "react-spinners-kit";
 
 export class Home extends Component {
 
@@ -80,8 +81,6 @@ export class Home extends Component {
     }
 
     productRender = (products)=>{
-        const {cart} = this.props;
-
         return products.map((item,index)=>{
             return (
                 <Col key={index} md={4} className={"mt-5"}>
@@ -106,13 +105,18 @@ export class Home extends Component {
         if (isLoading){
             return (
                 <div className={"d-flex justify-content-center align-items-center vh-100"}>
-                    Yükleniyor...
+                    <CircleSpinner size={30} color="#686769" loading={isLoading} />
                 </div>
             )
         }
 
         return (
             <>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Anasayfa - mCart</title>
+                </Helmet>
+
                 <Header/>
 
                 <Container className={"mt-5"}>

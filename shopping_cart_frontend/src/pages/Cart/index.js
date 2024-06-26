@@ -4,6 +4,7 @@ import withRouter from "../../withRouter";
 import {Badge, Button, Card, Col, Container, Row, Table} from "react-bootstrap";
 import cartWrapper from "../../cartWrapper";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 const KDV = 20;
 export class Cart extends Component {
@@ -41,6 +42,11 @@ export class Cart extends Component {
 
     return (
       <>
+          <Helmet>
+              <meta charSet="utf-8" />
+              <title>Sepet - mCart</title>
+          </Helmet>
+
       <Header/>
 
         <Container className={"mt-5"}>

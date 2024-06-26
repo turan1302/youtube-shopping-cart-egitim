@@ -6,6 +6,8 @@ import Notification from "../../RestAPI/Notification";
 import RestClient from "../../RestAPI/RestClient";
 import AppUrl from "../../RestAPI/AppUrl";
 import parse from 'html-react-parser';
+import {Helmet} from "react-helmet";
+import {CircleSpinner} from "react-spinners-kit";
 
 export class Payment extends Component {
     constructor(props) {
@@ -55,7 +57,7 @@ export class Payment extends Component {
         }).catch((err)=>{
             console.log(err);
             Notification.error({
-                text : "Bir hata oluştu. Lütfen Daha SOnra Tekrar Deneyiniz"
+                text : "Bir hata oluştu. Lütfen Daha Sonra Tekrar Deneyiniz"
             })
         })
     }
@@ -66,13 +68,18 @@ export class Payment extends Component {
         if (isLoading){
             return (
                 <div className={"d-flex justify-content-center align-content-center vh-100"}>
-                    Yükleniyor...
+                    <CircleSpinner size={30} color="#686769" loading={isLoading} />
                 </div>
             )
         }
 
         return (
             <>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Ödeme - mCart</title>
+                </Helmet>
+
                 <Header/>
 
                 {(paymentForm!=='') ? (
